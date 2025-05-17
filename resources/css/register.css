@@ -1,0 +1,63 @@
+.register-panel {
+  background-color: rgb(14, 33, 45);
+  padding: 40px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 500px;
+  color: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+
+.register-panel h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-form label {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.register-form input {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background: rgb(20, 51, 70);
+  color: white;
+  margin-bottom: 10px;
+}
+
+.register-btn {
+  background: rgb(47, 108, 148);
+  border: none;
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.signup-link {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+  color: #aaa;
+}
+
+.signup-link a {
+  color: #ffd700;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}
