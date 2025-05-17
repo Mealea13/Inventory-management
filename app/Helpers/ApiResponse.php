@@ -12,7 +12,7 @@ class ApiResponse
      * @param int    $status  HTTP status code (default: 200 OK)
      * @return \Illuminate\Http\JsonResponse
      */
-    public static function success($data = null, $message = 'Success', $status = 200)
+    public static function success($data = null, $message = 'The request has been processed successfully.', $status = 200)
     {
         return response()->json([
             'status'  => $status,
@@ -29,7 +29,7 @@ class ApiResponse
      * @param int    $status  HTTP status code (default: 400 Bad Request)
      * @return \Illuminate\Http\JsonResponse
      */
-    public static function error($message = 'Error', $errors = null, $status = 400)
+    public static function error($message = 'An unexpected error occurred while processing your request.', $errors = null, $status = 400)
     {
         $response = [
             'status'  => $status,
@@ -50,7 +50,7 @@ class ApiResponse
      * @param string $message Custom message
      * @return \Illuminate\Http\JsonResponse
      */
-    public static function validationError($errors, $message = 'Validation failed')
+    public static function validationError($errors, $message = 'Validation failed. Please review the provided inputs.')
     {
         return self::error($message, $errors, 422);
     }
@@ -61,7 +61,7 @@ class ApiResponse
      * @param string $message Custom message
      * @return \Illuminate\Http\JsonResponse
      */
-    public static function notFound($message = 'Resource not found')
+    public static function notFound($message = 'The requested resource could not be found.')
     {
         return self::error($message, null, 404);
     }
@@ -72,7 +72,7 @@ class ApiResponse
      * @param string $message Custom message
      * @return \Illuminate\Http\JsonResponse
      */
-    public static function unauthorized($message = 'Unauthorized')
+    public static function unauthorized($message = 'Unauthorized access. Please check your credentials and try again.')
     {
         return self::error($message, null, 401);
     }
@@ -83,8 +83,31 @@ class ApiResponse
      * @param string $message Custom message
      * @return \Illuminate\Http\JsonResponse
      */
-    public static function forbidden($message = 'Forbidden')
+    public static function forbidden($message = 'You do not have permission to access this resource.')
     {
         return self::error($message, null, 403);
+    }
+
+    /**
+     * Return a custom response with the provided status code.
+     *
+     * @param string $message Custom message
+     * @param int    $status  Custom status code (default: 500)
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public static function custom($message = 'Custom response message', $status = 500)
+    {
+        return self::error($message, null, $status);
+    }
+
+    /**
+     * Return a custom internal server error (HTTP 500).
+     *
+     * @param string $message Custom error message
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public static function internalServerError($message = 'Something went wrong, please try again later.')
+    {
+        return self::error($message, null, 500);
     }
 }

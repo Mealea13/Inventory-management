@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Ui\LoginController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\Ui\RegisterController;
 
 Route::get('/', function () {
     return view('index');
