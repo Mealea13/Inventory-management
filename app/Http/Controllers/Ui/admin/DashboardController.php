@@ -11,6 +11,5 @@ class DashboardController extends Controller
     {
         return view('admin.dashboard.dashboard'); // Make sure this Blade file exists
     }
-
     // You can also add your registration logic here later
 }
