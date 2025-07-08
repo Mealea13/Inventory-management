@@ -1,4 +1,4 @@
-@extends('layouts.head')
+@extends('admin.layouts.head')
 
 @section('title', 'Register')
 
