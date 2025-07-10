@@ -7054,10 +7054,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/css/admin/register.css":
-/*!******************************************!*\
-  !*** ./resources/css/admin/register.css ***!
-  \******************************************/
+/***/ "./resources/css/admin/product.css":
+/*!*****************************************!*\
+  !*** ./resources/css/admin/product.css ***!
+  \*****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -7067,10 +7067,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/css/admin/sidebar.css":
-/*!*****************************************!*\
-  !*** ./resources/css/admin/sidebar.css ***!
-  \*****************************************/
+/***/ "./resources/css/admin/register.css":
+/*!******************************************!*\
+  !*** ./resources/css/admin/register.css ***!
+  \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -7233,7 +7233,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /******/ 		var installedChunks = {
 /******/ 			"/js/app": 0,
 /******/ 			"css/app": 0,
-/******/ 			"css/sidebar": 0,
+/******/ 			"css/product": 0,
 /******/ 			"css/dashboard": 0,
 /******/ 			"css/register": 0,
 /******/ 			"css/login": 0
@@ -7286,12 +7286,12 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/sidebar","css/dashboard","css/register","css/login"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/sidebar","css/dashboard","css/register","css/login"], () => (__webpack_require__("./resources/css/app.css")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/sidebar","css/dashboard","css/register","css/login"], () => (__webpack_require__("./resources/css/admin/login.css")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/sidebar","css/dashboard","css/register","css/login"], () => (__webpack_require__("./resources/css/admin/register.css")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/sidebar","css/dashboard","css/register","css/login"], () => (__webpack_require__("./resources/css/admin/dashboard.css")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app","css/sidebar","css/dashboard","css/register","css/login"], () => (__webpack_require__("./resources/css/admin/sidebar.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/product","css/dashboard","css/register","css/login"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/product","css/dashboard","css/register","css/login"], () => (__webpack_require__("./resources/css/app.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/product","css/dashboard","css/register","css/login"], () => (__webpack_require__("./resources/css/admin/login.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/product","css/dashboard","css/register","css/login"], () => (__webpack_require__("./resources/css/admin/register.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","css/product","css/dashboard","css/register","css/login"], () => (__webpack_require__("./resources/css/admin/dashboard.css")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app","css/product","css/dashboard","css/register","css/login"], () => (__webpack_require__("./resources/css/admin/product.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
