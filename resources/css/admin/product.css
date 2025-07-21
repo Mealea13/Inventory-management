@@ -1,0 +1,243 @@
+:root {
+  --filter-bg: #2c2c3a;
+  --filter-padding: 20px;
+  --filter-radius: 12px;
+  --filter-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+  --text-color: #ffffff;
+  --title-font-size: 16px;
+  --title-font-weight: 600;
+  --size-bg: #444;
+  --size-hover-bg: #555;
+  --size-border: #888;
+  --size-active-bg: #6f42c1;
+  --size-active-text: #ffffff;
+  --size-active-border: #6f42c1;
+}
+
+* {
+  color: #ffffff !important;
+}
+
+body * {
+  color: #ffffff !important;
+}
+
+html * {
+  color: #ffffff !important;
+}
+
+/* Target all possible text elements */
+h1, h2, h3, h4, h5, h6,
+p, span, div, a, li, ul, ol,
+.card-body, .card-title, .card-text,
+.text-muted, .fw-bold, .mb-1, .mb-0,
+.user-profile, .role {
+  color: #ffffff !important;
+}
+
+/* SIDEBAR + FILTER PANEL */
+.filter-panel {
+  background-color: var(--filter-bg);
+  padding: var(--filter-padding);
+  border-radius: var(--filter-radius);
+  box-shadow: var(--filter-shadow);
+  position: fixed;
+}
+
+/* Filter Titles */
+.filter-title .title {
+  font-size: var(--title-font-size);
+  font-weight: var(--title-font-weight);
+  color: var(--text-color) !important;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.filter-title .title:hover {
+  color: var(--text-color) !important;
+}
+
+/* ULs and LIs for categories and sizes */
+.filter-size ul,
+#categoryList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: var(--text-color);
+}
+
+.filter-size li,
+#categoryList li {
+  padding: 8px 16px;
+  border: 1px solid var(--size-border);
+  border-radius: 6px;
+  background-color: var(--size-bg);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--text-color) !important; /* White text */
+}
+
+.filter-size li:hover,
+#categoryList li:hover {
+  background-color: var(--size-hover-bg);
+  color: var(--text-color) !important;
+}
+
+.filter-size li.active,
+#categoryList li.active {
+  background-color: var(--size-active-bg);
+  color: var(--size-active-text) !important;
+  border-color: var(--size-active-border);
+}
+
+.title,
+.filter h5,
+.filter-section,
+.filter-title {
+  color: var(--text-color) !important;
+}
+
+/* PRODUCT CARDS */
+.card {
+  background-color: #333;
+  border: 1px solid #555;
+}
+
+.card-body * {
+  color: var(--text-color) !important;
+}
+
+.card-title {
+  color: var(--text-color) !important;
+}
+
+/* HEADER ELEMENTS */
+.top-bar,
+.top-bar *,
+.user-profile,
+.user-profile *,
+.role {
+  color: var(--text-color) !important;
+}
+
+/* FORM ELEMENTS */
+input,
+input::placeholder,
+.form-control,
+.form-control::placeholder {
+  color: var(--text-color) !important;
+  background-color: #333 !important;
+  border-color: #555 !important;
+}
+
+input:focus,
+.form-control:focus {
+  color: var(--text-color) !important;
+  background-color: #333 !important;
+  border-color: #6f42c1 !important;
+  box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25) !important;
+}
+
+/* BOOTSTRAP OVERRIDES - More aggressive */
+.text-warning,
+.text-warning * {
+  color: #ffffff !important;
+}
+
+.text-danger,
+.text-danger * {
+  color: #ffffff !important;
+}
+
+.text-muted,
+.text-muted * {
+  color: #ffffff !important;
+}
+
+.text-primary,
+.text-primary * {
+  color: #ffffff !important;
+}
+
+.text-secondary,
+.text-secondary * {
+  color: #ffffff !important;
+}
+
+.text-success,
+.text-success * {
+  color: #ffffff !important;
+}
+
+.text-info,
+.text-info * {
+  color: #ffffff !important;
+}
+
+.text-warning,
+.text-warning * {
+  color: #ffffff !important;
+}
+
+.text-danger,
+.text-danger * {
+  color: #ffffff !important;
+}
+
+.text-dark,
+.text-dark * {
+  color: #ffffff !important;
+}
+
+/* BUTTONS */
+.btn-primary {
+  background-color: #6f42c1;
+  border-color: #6f42c1;
+  color: white !important;
+}
+
+.btn-primary:hover {
+  background-color: #5a32a3;
+  border-color: #5a32a3;
+  color: white !important;
+}
+
+/* ICONS */
+.bi {
+  color: var(--text-color) !important;
+}
+
+.bi-heart-fill {
+  color: #dc3545 !important;
+}
+
+.bi-star-fill {
+  color: #ffc107 !important;
+}
+
+/* LINKS */
+a {
+  color: var(--text-color) !important;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ccc !important;
+}
+
+/* ENSURE ALL CONTENT IS WHITE */
+.container-fluid,
+.container-fluid *,
+.row,
+.row *,
+.col-md-3,
+.col-md-3 *,
+.col-md-4,
+.col-md-4 *,
+.col-md-9,
+.col-md-9 * {
+  color: var(--text-color) !important;
+}
