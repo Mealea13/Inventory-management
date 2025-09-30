@@ -4,5 +4,6 @@
     "/css/product.css": "/css/product.css",
     "/css/dashboard.css": "/css/dashboard.css",
     "/css/register.css": "/css/register.css",
-    "/css/login.css": "/css/login.css"
+    "/css/login.css": "/css/login.css",
+    "/css/categories.css": "/css/categories.css"
 }

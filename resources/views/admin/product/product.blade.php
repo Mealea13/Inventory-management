@@ -3,177 +3,203 @@
 @section('title', 'Product')
 
 @section('content')
-<div class="container-fluid py-4">
-  <!-- Header -->
-  <header class="top-bar d-flex justify-content-between align-items-center mb-4">
-    <input type="text" id="searchInput" class="form-control w-50" placeholder="Search Product..." />
-    <div class="user-profile text-end">
-      <div class="beekhorng text-white">Beekhorng</div>
-      <div class="role text-white">Admin Profile</div>
+<link rel="stylesheet" href="{{ asset('css/product.css') }}">
+<div class="container">
+  <header class="top-bar">
+    <input type="text" id="searchInput" placeholder="Search Product...">
+    <div class="user-profile">
+      <div class="beekhorng">Beekhorng</div>
+      <div class="role">Admin Profile</div>
     </div>
   </header>
-  <h1 class="mb-4 fw-bold text-white">📦 Product Page</h1>
 
-  <div class="row">
-    <!-- Filter Panel -->
-    <div class="col-md-3">
-      <div class="filter-panel">
-        <div class="filter d-flex justify-content-between align-items-center mb-3">
-          <h5 class="fw-bold mb-0 text-white">Filter</h5>
-          <button type="reset" id="resetFilters" class="btn btn-sm btn-primary">Reset</button>
+  <h1 class="title-page">📦Product Page</h1>
+
+  <div class="layout">
+    <aside class="filter-panel">
+      <div class="filter">
+        <h5>Filter</h5>
+        <button type="reset" id="resetFilters">Reset</button>
+      </div>
+
+      <div class="filter-section">
+        <div class="filter-title">
+          <a class="title" href="#">Categories</a>
         </div>
+        <ul id="categoryList">
+          <li data-category="Centaphil">Centaphil</li>
+          <li data-category="Cerave">Cerave</li>
+          <li data-category="Ordinary">Ordinary</li>
+        </ul>
+      </div>
 
-        <!-- Categories -->
-        <div class="filter-section mb-4">
-          <div class="filter-title d-flex justify-content-between align-items-center">
-            <a class="title text-white" data-bs-toggle="collapse" href="#categories" role="button" aria-expanded="true">Categories</a>
-            <i class="bi bi-chevron-down text-white"></i>
-          </div>
-          <div class="collapse show text-white" id="categories">
-            <ul class="list-unstyled mt-2" id="categoryList">
-              <li data-category="Cleansing">Cleansing</li>
-              <li data-category="Sun Screen">Sun Screen</li>
-              <li data-category="Moisturising">Moisturising</li>
-              <li data-category="Watch">Watch</li>
-              <li data-category="Accessories">Accessories</li>
-            </ul>
-          </div>
+      <div class="filter-section">
+        <div class="filter-title">
+          <a class="title" href="#">Select Size</a>
         </div>
+        <ul id="sizeList">
+          <li data-size="XS">125ML</li>
+          <li data-size="S">250ML</li>
+          <li data-size="M">500ML</li>
+          <li data-size="L">1000ML</li>
+        </ul>
+      </div>
+    </aside>
 
-        <!-- Select Size -->
-        <div class="filter-section mb-4">
-          <div class="filter-title d-flex justify-content-between align-items-center">
-            <a class="title text-white" data-bs-toggle="collapse"  href="#size" role="button" aria-expanded="true">Select Size</a>
-            <i class="bi bi-chevron-down text-white"></i>
-          </div>
-          <div class="collapse show text-white" id="size">
-            <div class="filter-size mt-2">
-              <ul id="sizeList">
-                <li data-size="XS">XS</li>
-                <li data-size="S">S</li>
-                <li data-size="M">M</li>
-                <li data-size="L">L</li>
-                <li data-size="XL">XL</li>
-              </ul>
-            </div>
+    <section class="product-grid" id="productGrid">
+      <h2 class="Main-Text">Centaphil</h2>
+      @foreach ([
+        ['name' => 'Centaphil Cleansing Gel', 'category' => 'Cleansing', 'size' => 'M', 'price' => 9.99, 'img' => 'https://i.pinimg.com/1200x/98/da/69/98da694d65306a8162e1fce76bd61d5a.jpg'],
+        // ['name' => 'Centaphil Moisturising', 'category' => 'Moisturising', 'size' => 'S', 'price' => 11.99, 'img' => 'https://i.pinimg.com/1200x/47/56/35/475635fce131eeca4d1c5d13609ef849.jpg']
+      ] as $product)
+      <div class="product-card" data-category="{{ $product['category'] }}" data-size="{{ $product['size'] }}" data-name="{{ $product['name'] }}">
+        <div class="card">
+          <img src="{{ asset($product['img']) }}" alt="{{ $product['name'] }}">
+          <div class="card-body">
+            <p><i class="star">★</i> 4.5 (145)</p>
+            <h6>{{ $product['name'] }}</h6>
+            <p>Reference 1204</p>
+            <h5>${{ $product['price'] }}</h5>
+            <button class="add-to-cart">Add to Cart</button>
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- Product Grid -->
-    <div class="col-md-9">
-      <div class="row g-4" id="productGrid">
-        @foreach([
-          ['name' => 'Centaphil Cleansing Gel', 'category' => 'Cleansing', 'size' => 'M', 'price' => 9.99],
-        ] as $product)
-        <div class="col-md-4 product-card bg-dark-blue p-3" data-category="{{ $product['category'] }}" data-size="{{ $product['size'] }}" data-name="{{ $product['name'] }}">
-          <div class="card position-relative p-3">
-            <i class="bi bi-heart-fill text-danger position-absolute top-0 end-0 m-2 fs-5"></i>
-            <img src="{{ asset('https://i.pinimg.com/1200x/98/da/69/98da694d65306a8162e1fce76bd61d5a.jpg') }}" class="card-img-first" alt="{{ $product['name'] }}">
-            <div class="card-body text-center">
-              <p class="mb-1 text-warning"><i class="bi bi-star-fill"></i> 4.5 (145)</p>
-              <h6 class="fw-bold">{{ $product['name'] }}</h6>
-              <p class="text-muted">Reference 1204</p>
-              <h5 class="text-warning fw-bold">${{ $product['price'] }}</h5>
-              <button class="btn btn-primary w-90 mt-2 ">Add to Cart</button>
-            </div>
+      @endforeach
+      @foreach ([
+        ['name' => 'Centaphil Sun Screen', 'category' => 'Sun Screen', 'size' => 'L', 'price' => 9.95, 'img' => 'https://i.pinimg.com/1200x/11/aa/b7/11aab734909ece58d5a8c2adb07fe985.jpg']
+        // ['name' => 'Centaphil Moisturising', 'category' => 'Moisturising', 'size' => 'S', 'price' => 11.99, 'img' => 'https://i.pinimg.com/1200x/47/56/35/475635fce131eeca4d1c5d13609ef849.jpg']
+      ] as $product)
+      <div class="product-card" data-category="{{ $product['category'] }}" data-size="{{ $product['size'] }}" data-name="{{ $product['name'] }}">
+        <div class="card">
+          <img src="{{ asset($product['img']) }}" alt="{{ $product['name'] }}">
+          <div class="card-body">
+            <p><i class="star">★</i> 4.5 (145)</p>
+            <h6>{{ $product['name'] }}</h6>
+            <p>Reference 1204</p>
+            <h5>${{ $product['price'] }}</h5>
+            <button class="add-to-cart">Add to Cart</button>
           </div>
         </div>
-        @endforeach
-        @foreach([
-          ['name' => 'Centaphil Sun Screen', 'category' => 'Sun Screen', 'size' => 'L', 'price' => 9.95]
-        ] as $product)
-        <div class="col-md-4 product-card bg-dark-blue p-3" data-category="{{ $product['category'] }}" data-size="{{ $product['size'] }}" data-name="{{ $product['name'] }}">
-          <div class="card position-relative p-3">
-            <i class="bi bi-heart-fill text-danger position-absolute top-0 end-0 m-2 fs-5"></i>
-            <img src="{{ asset('https://i.pinimg.com/1200x/11/aa/b7/11aab734909ece58d5a8c2adb07fe985.jpg') }}" class="card-img-second" alt="{{ $product['name'] }}">
-            <div class="card-body text-center">
-              <p class="mb-1 text-warning"><i class="bi bi-star-fill"></i> 4.5 (145)</p>
-              <h6 class="fw-bold">{{ $product['name'] }}</h6>
-              <p class="text-muted">Reference 1204</p>
-              <h5 class="text-warning fw-bold">${{ $product['price'] }}</h5>
-              <button class="btn btn-primary w-90 mt-2 ">Add to Cart</button>
-            </div>
-          </div>https://i.pinimg.com/1200x/47/56/35/475635fce131eeca4d1c5d13609ef849.jpg
-        </div>
-        @endforeach
-        @foreach([
-          ['name' => 'Centaphil Moisturising', 'category' => 'Moisturising', 'size' => 'S', 'price' => 11.99]
-        ] as $product)
-        <div class="col-md-4 product-card bg-dark-blue p-3" data-category="{{ $product['category'] }}" data-size="{{ $product['size'] }}" data-name="{{ $product['name'] }}">
-          <div class="card position-relative p-3">
-            <i class="bi bi-heart-fill text-danger position-absolute top-0 end-0 m-2 fs-5"></i>
-            <img src="{{ asset('https://i.pinimg.com/1200x/47/56/35/475635fce131eeca4d1c5d13609ef849.jpg') }}" class="card-img-third" alt="{{ $product['name'] }}">
-            <div class="card-body text-center">
-              <p class="mb-1 text-warning"><i class="bi bi-star-fill"></i> 4.5 (145)</p>
-              <h6 class="fw-bold">{{ $product['name'] }}</h6>
-              <p class="text-muted">Reference 1204</p>
-              <h5 class="text-warning fw-bold">${{ $product['price'] }}</h5>
-              <button class="btn btn-primary w-90 mt-2 ">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-        @endforeach
-        @foreach([
-          ['name' => 'Centaphil Cleansing Gel', 'category' => 'Cleansing', 'size' => 'M', 'price' => 9.99],
-        ] as $product)
-        <div class="col-md-4 product-card bg-dark-blue p-3" data-category="{{ $product['category'] }}" data-size="{{ $product['size'] }}" data-name="{{ $product['name'] }}">
-          <div class="card position-relative p-3">
-            <i class="bi bi-heart-fill text-danger position-absolute top-0 end-0 m-2 fs-5"></i>
-            <img src="{{ asset('https://i.pinimg.com/1200x/98/da/69/98da694d65306a8162e1fce76bd61d5a.jpg') }}" class="card-img-first" alt="{{ $product['name'] }}">
-            <div class="card-body text-center">
-              <p class="mb-1 text-warning"><i class="bi bi-star-fill"></i> 4.5 (145)</p>
-              <h6 class="fw-bold">{{ $product['name'] }}</h6>
-              <p class="text-muted">Reference 1204</p>
-              <h5 class="text-warning fw-bold">${{ $product['price'] }}</h5>
-              <button class="btn btn-primary w-90 mt-2 ">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-        @endforeach
-        @foreach([
-          ['name' => 'Centaphil Cleansing Gel', 'category' => 'Cleansing', 'size' => 'M', 'price' => 9.99],
-        ] as $product)
-        <div class="col-md-4 product-card bg-dark-blue p-3" data-category="{{ $product['category'] }}" data-size="{{ $product['size'] }}" data-name="{{ $product['name'] }}">
-          <div class="card position-relative p-3">
-            <i class="bi bi-heart-fill text-danger position-absolute top-0 end-0 m-2 fs-5"></i>
-            <img src="{{ asset('https://i.pinimg.com/1200x/98/da/69/98da694d65306a8162e1fce76bd61d5a.jpg') }}" class="card-img-first" alt="{{ $product['name'] }}">
-            <div class="card-body text-center">
-              <p class="mb-1 text-warning"><i class="bi bi-star-fill"></i> 4.5 (145)</p>
-              <h6 class="fw-bold">{{ $product['name'] }}</h6>
-              <p class="text-muted">Reference 1204</p>
-              <h5 class="text-warning fw-bold">${{ $product['price'] }}</h5>
-              <button class="btn btn-primary w-90 mt-2 ">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-        @endforeach
-        @foreach([
-          ['name' => 'Centaphil Cleansing Gel', 'category' => 'Cleansing', 'size' => 'M', 'price' => 9.99],
-        ] as $product)
-        <div class="col-md-4 product-card bg-dark-blue p-3" data-category="{{ $product['category'] }}" data-size="{{ $product['size'] }}" data-name="{{ $product['name'] }}">
-          <div class="card position-relative p-3">
-            <i class="bi bi-heart-fill text-danger position-absolute top-0 end-0 m-2 fs-5"></i>
-            <img src="{{ asset('https://i.pinimg.com/1200x/98/da/69/98da694d65306a8162e1fce76bd61d5a.jpg') }}" class="card-img-first" alt="{{ $product['name'] }}">
-            <div class="card-body text-center">
-              <p class="mb-1 text-warning"><i class="bi bi-star-fill"></i> 4.5 (145)</p>
-              <h6 class="fw-bold">{{ $product['name'] }}</h6>
-              <p class="text-muted">Reference 1204</p>
-              <h5 class="text-warning fw-bold">${{ $product['price'] }}</h5>
-              <button class="btn btn-primary w-90 mt-2 ">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-        @endforeach
       </div>
-    </div>
+      @endforeach
+      @foreach ([
+        ['name' => 'Centaphil Moisturising', 'category' => 'Moisturising', 'size' => 'S', 'price' => 11.99, 'img' => 'https://i.pinimg.com/1200x/47/56/35/475635fce131eeca4d1c5d13609ef849.jpg']
+      ] as $product)
+      <div class="product-card" data-category="{{ $product['category'] }}" data-size="{{ $product['size'] }}" data-name="{{ $product['name'] }}">
+        <div class="card">
+          <img src="{{ asset($product['img']) }}" alt="{{ $product['name'] }}">
+          <div class="card-body">
+            <p><i class="star">★</i> 4.5 (145)</p>
+            <h6>{{ $product['name'] }}</h6>
+            <p>Reference 1204</p>
+            <h5>${{ $product['price'] }}</h5>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      @endforeach
+      <h2 class="Main-Text">Cerave</h2>
+      @foreach ([
+        ['name' => 'Cerave Cleansing Foam', 'category' => 'Cleansing', 'size' => 'M', 'price' => 9.99, 'img' => 'https://i.pinimg.com/1200x/46/19/11/461911b99afdf1e17839032f613b8769.jpg']
+      ] as $product)
+      <div class="product-card" data-category="{{ $product['category'] }}" data-size="{{ $product['size'] }}" data-name="{{ $product['name'] }}">
+        <div class="card">
+          <img src="{{ asset($product['img']) }}" alt="{{ $product['name'] }}">
+          <div class="card-body">
+            <p><i class="star">★</i> 4.5 (145)</p>
+            <h6>{{ $product['name'] }}</h6>
+            <p>Reference 1204</p>
+            <h5>${{ $product['price'] }}</h5>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      @endforeach
+      @foreach ([
+        ['name' => 'Cerave Sun Screen', 'category' => 'Sun Screen', 'size' => 'L', 'price' => 9.95, 'img' => 'https://i.pinimg.com/1200x/3c/b6/53/3cb6535d41cc17391d10ba51146987bd.jpg']
+      ] as $product)
+      <div class="product-card" data-category="{{ $product['category'] }}" data-size="{{ $product['size'] }}" data-name="{{ $product['name'] }}">
+        <div class="card">
+          <img src="{{ asset($product['img']) }}" alt="{{ $product['name'] }}">
+          <div class="card-body">
+            <p><i class="star">★</i> 4.5 (145)</p>
+            <h6>{{ $product['name'] }}</h6>
+            <p>Reference 1204</p>
+            <h5>${{ $product['price'] }}</h5>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      @endforeach
+      @foreach ([
+        ['name' => 'Cerave Moisturising', 'category' => 'Moisturising', 'size' => 'S', 'price' => 11.99, 'img' => 'https://i.pinimg.com/1200x/3c/fd/da/3cfdda5f23f2f971c27b524f93cba5cd.jpg']
+      ] as $product)
+      <div class="product-card" data-category="{{ $product['category'] }}" data-size="{{ $product['size'] }}" data-name="{{ $product['name'] }}">
+        <div class="card">
+          <img src="{{ asset($product['img']) }}" alt="{{ $product['name'] }}">
+          <div class="card-body">
+            <p><i class="star">★</i> 4.5 (145)</p>
+            <h6>{{ $product['name'] }}</h6>
+            <p>Reference 1204</p>
+            <h5>${{ $product['price'] }}</h5>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      @endforeach
+      <h2 class="Main-Text">Ordinary</h2>
+      @foreach ([
+        ['name' => 'Centaphil Cleansing Gel', 'category' => 'Cleansing', 'size' => 'M', 'price' => 9.99, 'img' => 'https://i.pinimg.com/1200x/98/da/69/98da694d65306a8162e1fce76bd61d5a.jpg'],
+        // ['name' => 'Centaphil Moisturising', 'category' => 'Moisturising', 'size' => 'S', 'price' => 11.99, 'img' => 'https://i.pinimg.com/1200x/47/56/35/475635fce131eeca4d1c5d13609ef849.jpg']
+      ] as $product)
+      <div class="product-card" data-category="{{ $product['category'] }}" data-size="{{ $product['size'] }}" data-name="{{ $product['name'] }}">
+        <div class="card">
+          <img src="{{ asset($product['img']) }}" alt="{{ $product['name'] }}">
+          <div class="card-body">
+            <p><i class="star">★</i> 4.5 (145)</p>
+            <h6>{{ $product['name'] }}</h6>
+            <p>Reference 1204</p>
+            <h5>${{ $product['price'] }}</h5>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      @endforeach
+      @foreach ([
+        ['name' => 'Centaphil Sun Screen', 'category' => 'Sun Screen', 'size' => 'L', 'price' => 9.95, 'img' => 'https://i.pinimg.com/1200x/11/aa/b7/11aab734909ece58d5a8c2adb07fe985.jpg']
+        // ['name' => 'Centaphil Moisturising', 'category' => 'Moisturising', 'size' => 'S', 'price' => 11.99, 'img' => 'https://i.pinimg.com/1200x/47/56/35/475635fce131eeca4d1c5d13609ef849.jpg']
+      ] as $product)
+      <div class="product-card" data-category="{{ $product['category'] }}" data-size="{{ $product['size'] }}" data-name="{{ $product['name'] }}">
+        <div class="card">
+          <img src="{{ asset($product['img']) }}" alt="{{ $product['name'] }}">
+          <div class="card-body">
+            <p><i class="star">★</i> 4.5 (145)</p>
+            <h6>{{ $product['name'] }}</h6>
+            <p>Reference 1204</p>
+            <h5>${{ $product['price'] }}</h5>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      @endforeach
+      @foreach ([
+        ['name' => 'Centaphil Moisturising', 'category' => 'Moisturising', 'size' => 'S', 'price' => 11.99, 'img' => 'https://i.pinimg.com/1200x/47/56/35/475635fce131eeca4d1c5d13609ef849.jpg']
+      ] as $product)
+      <div class="product-card" data-category="{{ $product['category'] }}" data-size="{{ $product['size'] }}" data-name="{{ $product['name'] }}">
+        <div class="card">
+          <img src="{{ asset($product['img']) }}" alt="{{ $product['name'] }}">
+          <div class="card-body">
+            <p><i class="star">★</i> 4.5 (145)</p>
+            <h6>{{ $product['name'] }}</h6>
+            <p>Reference 1204</p>
+            <h5>${{ $product['price'] }}</h5>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      @endforeach
+    </section>
   </div>
 </div>
-
-<!-- CSS & JS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="{{ asset('js/product.js') }}"></script>
 @endsection
